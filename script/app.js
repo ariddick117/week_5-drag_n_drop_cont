@@ -10,7 +10,10 @@
 
 	let draggablePieces = piecesBoard.querySelectorAll("img");
 
-	// debugger;
+	// arrays are indexed and start at zero
+	const imageNameArray = ["topLeft", "topRight", "bottomLeft", "bottomRight"];
+
+	debugger;
 	
 	function switchImage() {
 		console.log(this);
@@ -25,7 +28,18 @@
 		puzzleBoard.style.backgroundImage = `url(${bgImage})`;
 
 
-		// debugger;
+		// work on switching the right-hand images so that they match the bottom background
+
+		draggablePieces.forEach((image, index) => {
+			// log the image and the current index
+			console.log(image, index);
+
+			// try to change each image source
+			image.src = `images/${imageNameArray[index]}${this.dataset.puzzleref}.jpg`;
+
+	// debugger;
+
+		});
 	}
 
 
@@ -57,6 +71,8 @@
 		// allows a user to drop an element
 		zone.addEventListener("drop", function(e) {
 			e.preventDefault();
+
+
 			console.log("you dropped sumthin on me");
 
 			let draggedElement = e.dataTransfer.getData("text/plain");
